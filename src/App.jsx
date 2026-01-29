@@ -1,5 +1,5 @@
 
-
+/*
 import Footer from '../src/components/Footer.jsx'
 import Header from '../src/components/Header.jsx'
 import StartPage from '../src/components/StartPage.jsx'
@@ -16,4 +16,4 @@ function App() {
   )
 }
 
-export default App
+export default App*/
