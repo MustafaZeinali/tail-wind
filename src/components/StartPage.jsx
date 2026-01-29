@@ -1,4 +1,4 @@
-import Palm from "./assets/dryPalm.jpeg";
+/*import Palm from "./assets/dryPalm.jpeg";
 import palma from "./assets/palma.webp";
 import beach from "./assets/nedladdning.jpg";
 import pentHouse from "./assets/laPentHouse.jpg";
@@ -6,8 +6,10 @@ import sunset from "./assets/laSunset.jpg";
 import street from "./assets/laStreet.webp";
 import tokyo from "./assets/tokyo.jpg";
 import oldTokyo from "./assets/tokyoOld.jpg";
-import tokyoStreet from "./assets/tokyoStreet.jpg";
-const StartPage = () => {
+import tokyoStreet from "./assets/tokyoStreet.jpg";*/
+import products from "../data.js";
+import ProductCard from "./ItemCard.jsx";
+/*const StartPage = () => {
   return (
     <main className="bg-sky-500/10 flex-1">
       <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
@@ -129,6 +131,23 @@ const StartPage = () => {
         </div>
         
       </section>
+    </main>
+   
+  );
+};*/
+const StartPage = () => {
+  return (
+    <main className="bg-sky-500/10 flex-1">
+      <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+        {products.map((item) => (
+          <ProductCard className="rounded-lg bg-white/50 shadow-sm transition-transform duration-200 ease-in-out hover:scale-105"
+            key={item.id}
+            image={item.image}
+            description={item.description}
+            price={item.price}
+          />
+        ))}
+      </ul>
     </main>
   );
 };

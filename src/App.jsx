@@ -1,8 +1,8 @@
 
 
-import Footer from './Footer'
-import Header from './Header'
-import StartPage from './StartPAge'
+import Footer from '../src/components/Footer.jsx'
+import Header from '../src/components/Header.jsx'
+import StartPage from '../src/components/StartPage.jsx'
 
 function App() {
   
