@@ -1,7 +1,13 @@
 import Palm from "./assets/dryPalm.jpeg";
+import palm1 from "./assets/palm1.jpg";
+import palm2 from "./assets/palm2.webp";
+import palm3 from "./assets/palm3.jpg";
 import palma from "./assets/palma.webp";
 import beach from "./assets/nedladdning.jpg";
 import pentHouse from "./assets/laPentHouse.jpg";
+import pentHouse1 from "./assets/laPentHouse1.webp";
+import pentHouse2 from "./assets/laPentHouse2.jpg";
+import pentHouse3 from "./assets/laPentHouse3.webp";
 import sunset from "./assets/laSunset.jpg";
 import street from "./assets/laStreet.webp";
 import lahouse from "./assets/laHouse.jpg";
@@ -15,7 +21,7 @@ import tokyoStreet from "./assets/tokyoStreet.jpg";
   {
     id: 1221,
     image: Palm,
-    images:[lahouse,lahouse1,lahouse2],
+    images:[Palm, palm1,palm2,palm3],
     title: "Dream Beach",
     description: "This is your dream beach",
     details:
@@ -26,6 +32,7 @@ import tokyoStreet from "./assets/tokyoStreet.jpg";
   {
     id: 1333,
     image: palma,
+    images:[Palm, palm1,palm2,palm3],
     title: "Palm Paradise",
     description: "Don't miss it",
     details:
@@ -36,6 +43,7 @@ import tokyoStreet from "./assets/tokyoStreet.jpg";
   {
     id: 1441,
     image: beach,
+    images:[Palm, palm1,palm2,palm3],
     title: "Phenomenal Beach",
     description: "this is it a phenomenoa",
     details:
@@ -46,6 +54,7 @@ import tokyoStreet from "./assets/tokyoStreet.jpg";
   {
     id: 1515,
     image: pentHouse,
+    images:[pentHouse,pentHouse1,pentHouse2,pentHouse3],
     title: "Luxury Penthouse",
     description: "your vacation place is here",
     details:
@@ -56,6 +65,7 @@ import tokyoStreet from "./assets/tokyoStreet.jpg";
   {
     id: 16161,
     image: sunset,
+    images:[Palm, palm1,palm2,palm3],
     title: "Sunset City",
     description: "A city with all potentioal",
     details:
@@ -66,6 +76,7 @@ import tokyoStreet from "./assets/tokyoStreet.jpg";
   {
     id: 17771,
     image: street,
+    images:[lahouse,lahouse1,lahouse2],
     title: "Joyful Streets",
     description: "Warm and joyful in city",
     details:
@@ -76,6 +87,7 @@ import tokyoStreet from "./assets/tokyoStreet.jpg";
   {
     id: 1881,
     image: tokyo,
+    images:[tokyo,tokyoStreet,oldTokyo],
     title: "Tokyo Mountains",
     description: "A city with mountain",
     details:
@@ -86,6 +98,7 @@ import tokyoStreet from "./assets/tokyoStreet.jpg";
   {
     id: 19991,
     image: oldTokyo,
+    images:[oldTokyo,tokyo,tokyoStreet],
     title: "Old Tokyo Samurai",
     description: "Welcome to the city of samurai",
     details:
@@ -96,6 +109,7 @@ import tokyoStreet from "./assets/tokyoStreet.jpg";
   {
     id: 211121,
     image: tokyoStreet,
+    images:[oldTokyo,tokyo,tokyoStreet],
     title: "Future Tokyo",
     description: "you are in future",
     details:
