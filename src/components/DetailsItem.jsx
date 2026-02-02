@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom"
 import products from "../data.js"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import ReservCalender from "./Calender.jsx"
+import { ContextTail } from "../ContextConfig.jsx"
 const DetailsItem = ()=>{ 
+    const {open , setOpen} = useContext(ContextTail)
     const [currentIndex , setCurrentIndex]= useState(0)
-    const [open , setOpen] = useState(false)
     const {id} = useParams()
     const theData = products.find((p) => p.id=== Number(id))
     if(!theData)return null;
