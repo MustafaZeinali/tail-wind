@@ -16,6 +16,7 @@ import lahouse2 from "./assets/lahouse2.jpg";
 import tokyo from "./assets/tokyo.jpg";
 import oldTokyo from "./assets/tokyoOld.jpg";
 import tokyoStreet from "./assets/tokyoStreet.jpg";
+import tokyoJapan from "./assets/tokyoJapan.jpg";
 
   const products = [
   {
@@ -97,8 +98,8 @@ import tokyoStreet from "./assets/tokyoStreet.jpg";
   },
   {
     id: 19991,
-    image: oldTokyo,
-    images:[oldTokyo,tokyo,tokyoStreet],
+    image: tokyoJapan,
+    images:[tokyoJapan, oldTokyo,tokyo,tokyoStreet],
     title: "Old Tokyo Samurai",
     description: "Welcome to the city of samurai",
     details:
