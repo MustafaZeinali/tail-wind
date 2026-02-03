@@ -1,44 +1,56 @@
 import ocean from "../assets/beachDrone.mp4"
 import dryPalm from "../assets/dryPalm.jpeg";
 import penthouse from "../assets/laPentHouse.jpg";
-import tokyosamurai from "../assets/tokyoOld.jpg";
+import tokyoJapan from "../assets/tokyoJapan.jpg";
+import { Link } from "react-router-dom";
 const Home = () =>{
-
+ //Link is gonna fix 
     return(
         <>
-        <main className="bg-black/11">
-            <div className="relative w-full h-[70vh]">
+        <main>
+            <div className="relative w-full h-[80vh]">
                 <video className="absolute inset-0 h-full w-full object-cover" src={ocean} autoPlay loop muted />
-                <div className="absolute inset-0 flex justify-center items-center bg-black/10">
+                <div className="absolute inset-0 flex justify-center items-center bg-black/10 hover:bg-black/1">
                     <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-semibold text-center px-4 py-4 md:p-6 drop-shadow-lg">
                         Welcome to Sun Travel
                     </h1>
                 </div>
             </div>
-          <div>
-            <p>
-                we have Off for two weeks
-            </p>
-          </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-5 py-5 px-4">
-                <div className="flex flex-col rounded-lg overflow-hidden bg-red-200">
-                    <div className="aspect-square overflow-hidden">
-                        <img className="w-full h-full object-cover" src={dryPalm} alt="Palm" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4 h-[80vh] bg-orange-200" >
+                <div className="flex flex-col justify-center overflow-hidden ">
+                    <div className=" overflow-hidden">
+                        <Link to="/product/1221">
+                        <img className="w-full" src={dryPalm} alt="Palm" />
+
+                        </Link>
                     </div>
-                    <p className="p-3 font-semibold text-base sm:text-lg md:text-xl shrink-0">20% for first booking</p>
+                    <p className=" font-semibold text-base sm:text-lg md:text-xl shrink-0">20% for first booking</p>
                 </div>
-                <div className="flex flex-col rounded-lg overflow-hidden bg-red-200">
-                    <div className="aspect-square overflow-hidden">
-                        <img className="w-full h-full object-cover" src={penthouse} alt="Penthouse" />
+                <div className="flex flex-col justify-center overflow-hidden ">
+                    <div className=" overflow-hidden">
+                       <Link to="/product/1515"> 
+                       <img className="w-full  object-cover" src={penthouse} alt="Penthouse" />
+                       </Link> 
                     </div>
-                    <p className="p-3 font-semibold text-base sm:text-lg md:text-xl shrink-0">Penthouse under price</p>
+                    <p className=" font-semibold text-base sm:text-lg md:text-xl shrink-0">Penthouse under price</p>
                 </div>
-                <div className="flex flex-col rounded-lg overflow-hidden bg-red-200">
-                    <div className="aspect-square overflow-hidden">
-                        <img className="w-full h-full object-cover" src={tokyosamurai} alt="Tokyo" />
+                <div className="flex flex-col justify-center overflow-hidden ">
+                    <div className=" overflow-hidden">
+                        <Link to="/product/19991">
+                        <img className="w-full  object-cover" src={tokyoJapan} alt="Tokyo" />
+                        </Link>
                     </div>
-                    <p className="p-3 font-semibold text-base sm:text-lg md:text-xl shrink-0">Two weeks half price</p>
+                    <p className=" font-semibold text-base sm:text-lg md:text-xl shrink-0">Two weeks half price</p>
                 </div>
+            </div>
+            <div className="h-[80vh] bg-black/70 flex ">
+                <div className="bg-red-300 flex items-center">
+                    <p className="text-6xl text-white font-serif"> we have got awards </p>
+                </div>
+                <div>
+                    <p>ITem</p>
+                </div>
+
             </div>
         </main>
         </>

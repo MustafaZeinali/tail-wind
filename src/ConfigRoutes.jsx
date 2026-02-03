@@ -3,6 +3,7 @@ import Root from "./RootConfig";
 import StartPage from "./components/StartPage.jsx";
 import DetailsItem from "./components/DetailsItem.jsx";
 import Home from "./components/Home.jsx";
+import Contact from "./components/Contact.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
         path: "/product/:id",
         element: <DetailsItem />,
       },
+      {
+        path: "/Contact",
+        element: <Contact/>
+      }
     ],
   },
 ]);
