@@ -4,6 +4,7 @@ import StartPage from "./components/StartPage.jsx";
 import DetailsItem from "./components/DetailsItem.jsx";
 import Home from "./components/Home.jsx";
 import Contact from "./components/Contact.jsx";
+import About from "./components/AboutOss.jsx"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/Contact",
         element: <Contact/>
+      },
+      {
+        path:"/aboutOss",
+        element: <About/>
       }
     ],
   },
