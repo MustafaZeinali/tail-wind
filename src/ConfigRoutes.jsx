@@ -4,7 +4,7 @@ import StartPage from "./components/StartPage.jsx";
 import DetailsItem from "./components/DetailsItem.jsx";
 import Home from "./components/Home.jsx";
 import Contact from "./components/Contact.jsx";
-import About from "./components/AboutOss.jsx"
+import About from "./components/AboutUs.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
