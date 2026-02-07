@@ -7,19 +7,19 @@ const About = () => {
     <>
       <main className="bg-sky-50">
         {/* Intro section */}
-        <motion.div
-        variants={{
+  
+
+        
+        <section className="bg-blue-100 py-10">
+          <motion.div 
+                  variants={{
           hidden: {opacity: 0, x:50 },
           visible: {opacity: 1 , x : 0}
         }}
         initial="hidden"
         animate="visible"
         transition={{duration: 0.7, ease: "easeOut"}}
-        >
-
-        
-        <section className="bg-blue-100 py-10">
-          <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 md:flex-row">
+          className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 md:flex-row">
             <p className="text-lg leading-relaxed sm:text-xl md:text-2xl font-serif">
               Welcome to <span className="font-semibold">Sun Travel</span>, your trusted travel partner for easy
               and stress-free trips. We specialize in helping travelers book the
@@ -35,12 +35,20 @@ const About = () => {
               src={employee}
               alt="Travel agency employees"
             />
-          </div>
+          </motion.div>
         </section>
 
         {/* Plane section */}
         <section className="bg-green-100 py-10">
-          <div className="mx-auto flex max-w-6xl flex-col-reverse items-center gap-6 px-4 md:flex-row">
+          <motion.div
+                  variants={{
+          hidden: {opacity: 0, x:-50 },
+          visible: {opacity: 1 , x : 0}
+        }}
+        initial="hidden"
+        animate="visible"
+        transition={{duration: 0.7, ease: "easeOut"}}
+          className="mx-auto flex max-w-6xl flex-col-reverse items-center gap-6 px-4 md:flex-row">
             <img
               className="w-full max-w-lg md:w-1/2 rounded-lg object-cover"
               src={palne}
@@ -55,12 +63,20 @@ const About = () => {
               temporibus aspernatur repudiandae labore nobis repellendus, libero
               placeat?
             </p>
-          </div>
+          </motion.div>
         </section>
 
         {/* Airport section */}
         <section className="bg-white py-10">
-          <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 md:flex-row">
+          <motion.div
+                  variants={{
+          hidden: {opacity: 0, y:50 },
+          visible: {opacity: 1 , y : 0}
+        }}
+        initial="hidden"
+        animate="visible"
+        transition={{duration: 0.7, ease: "easeOut"}}
+          className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 md:flex-row">
             <p className="text-base leading-relaxed sm:text-lg md:text-xl">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
               nulla mollitia culpa aliquid odit ut asperiores iure harum atque,
@@ -74,9 +90,9 @@ const About = () => {
               src={airport}
               alt="Airport terminal"
             />
-          </div>
+          </motion.div>
         </section>
-        </motion.div>
+
       </main>
     </>
   );

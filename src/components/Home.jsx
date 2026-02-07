@@ -2,6 +2,7 @@ import ocean from "../assets/beachDrone.mp4"
 import dryPalm from "../assets/dryPalm.jpeg";
 import penthouse from "../assets/laPentHouse.jpg";
 import tokyoJapan from "../assets/tokyoJapan.jpg";
+import pris from "../assets/pris.png";
 import { Link } from "react-router-dom";
 const Home = () =>{
  //Link is gonna fix 
@@ -45,10 +46,10 @@ const Home = () =>{
             </div>
             <div className="h-[80vh] bg-black/70 flex ">
                 <div className="bg-red-300 flex items-center">
-                    <p className="text-6xl text-white font-serif"> we have got awards </p>
+                    <p className="text-6xl text-white font-serif p-2"> we have got awards </p>
                 </div>
-                <div>
-                    <p>ITem</p>
+                <div className="overflow-hidden">
+                    <img src={pris} alt="pris" />
                 </div>
 
             </div>
