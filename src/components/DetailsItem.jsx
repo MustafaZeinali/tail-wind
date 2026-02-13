@@ -4,7 +4,7 @@ import { useContext, useState } from "react"
 import ReservCalender from "./Calender.jsx"
 import { ContextTail } from "../ContextConfig.jsx"
 const DetailsItem = ()=>{ 
-    const {open , setOpen} = useContext(ContextTail)
+    const {open , setOpen , collectedDays ,totalDays ,setCollectedDays, } = useContext(ContextTail); 
     const [currentIndex , setCurrentIndex]= useState(0)
     const {id} = useParams()
     const theData = products.find((p) => p.id=== Number(id))
@@ -26,6 +26,10 @@ const DetailsItem = ()=>{
         setOpen(true)
 
     }
+    const handleClick = () =>{
+        setCollectedDays()
+    }
+    
     return(
         <>
         <main className="w-full max-w-4xl mx-auto px-4" >
@@ -45,11 +49,26 @@ const DetailsItem = ()=>{
                 </div>
                 <button onClick={handleReservModal} className="border px-4 py-1 rounded-sm
                 mt-5 hover:bg-black hover:text-white "> Book </button>
-                { open ?  <div>
+                <div>
+                      { open ?  <div>
 
                 <ReservCalender/>
                 </div> : false}
-                
+                </div>
+              
+                {totalDays.length > 0 && collectedDays.length >= 2 && (
+                  <div className="mt-6 w-full max-w-2xl rounded-lg bg-white/80 px-4 py-3 shadow-sm text-sm sm:text-base text-sky-900">
+                    <p className="font-semibold text-sky-800">
+                      {totalDays.length} days selected
+                    </p>
+                    <p className="mt-1">
+                      It begins:{" "}
+                      <span className="font-medium">{collectedDays[0]}</span>{" "}
+                      to{" "}
+                      <span className="font-medium">{collectedDays[1]}</span>
+                    </p>
+                  </div>
+                )}
             </section>
         </main>
         </>

@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
-import calender from "../assets/calender.jpg";
 import { ContextTail } from "../ContextConfig";
+
 const ReservCalender = () => {
-  const { open, setOpen } = useContext(ContextTail);
+  const { setOpen, setCollectedDays, setTotalDays } = useContext(ContextTail);
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [selectedDay , setSelectedDay] = useState([])
-  const [ startDate , setStartDate] = useState(null);
-  const [endDate , setEndDate] = useState(null);
-  const [theMonths, setTheMonths] = useState([
+  const [selectedDay, setSelectedDay] = useState([]);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [theMonths] = useState([
     "january",
     "february",
     "march",
@@ -24,111 +24,155 @@ const ReservCalender = () => {
   const weeks = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const year = currentMonth.getFullYear();
   const month = currentMonth.getMonth();
+
   const day = () => {
     const firstDayOfMonth = new Date(year, month, 1).getDay();
-    return Array(firstDayOfMonth).fill(""); 
+    return Array(firstDayOfMonth).fill("");
   };
-  const weeksfull = Array.from({ length: day() }, (_) => "");
+  const weeksfull = Array.from({ length: day().length }, () => "");
+
   const handleDate = () => {
     return new Date(year, month + 1, 0).getDate();
   };
-  console.log("get months", currentMonth);
   const days = Array.from({ length: handleDate() }, (_, i) => i + 1);
-  console.log("days", days);
 
   const nextMonth = () => {
-    return setCurrentMonth(new Date(year, month + 1, 1));
+    setCurrentMonth(new Date(year, month + 1, 1));
   };
   const previousMonth = () => {
-    return setCurrentMonth(new Date(year, month, -1));
+    setCurrentMonth(new Date(year, month - 1, 1));
   };
-  const allSelectedDays = (num) =>{
-    if (startDate === null){
-      setStartDate(new Date(year , month, num))
-    }else if (endDate === null){
-      setEndDate(new Date(year , month , num))
-      const start = startDate.getDate()
-      const end = num
-      const minDay = Math.min(start, end)
-      const maxDay = Math.max(start, end)
-      const numberOfDays = maxDay - minDay + 1;
-      const allDays = Array.from({length: numberOfDays} , (_ , i) => {
-        const dayNumber = minDay + i
-        return new Date(year , month, dayNumber)
-      })
-      setSelectedDay(allDays)
-    }else{
-      setStartDate(null)
-      setEndDate(null)
-      setSelectedDay([])
-    }
-    return
-  }
 
-  // const daysAreSelected = (dayNumber) =>{
-  //   const checkedDays = selectedDay.find(item => item === dayNumber)
-  //   if(checkedDays){
-  //     setSelectedDay((previousSelectedDay)=> previousSelectedDay.filter(item => item !== dayNumber))
-  //   }else{
-  //     setSelectedDay([...selectedDay, dayNumber])
-  //   }
-  // }
+  const allSelectedDays = (num) => {
+    if (startDate === null) {
+      setStartDate(new Date(year, month, num));
+    } else if (endDate === null) {
+      const newEnd = new Date(year, month, num);
+      setEndDate(newEnd);
+      const start = startDate.getDate();
+      const end = num;
+      const minDay = Math.min(start, end);
+      const maxDay = Math.max(start, end);
+      const numberOfDays = maxDay - minDay + 1;
+      const allDays = Array.from({ length: numberOfDays }, (_, i) => {
+        const dayNumber = minDay + i;
+        return new Date(year, month, dayNumber);
+      });
+
+      const formattedDays = [
+        allDays[0].toLocaleDateString(),
+        allDays[allDays.length - 1].toLocaleDateString(),
+      ];
+
+      setSelectedDay(allDays);
+      setCollectedDays(formattedDays);
+      setTotalDays(allDays);
+    } else {
+      setStartDate(null);
+      setEndDate(null);
+      setSelectedDay([]);
+      setCollectedDays([]);
+      setTotalDays([]);
+    }
+  };
+
   const handleClickCalnder = () => {
     setOpen(false);
   };
+
   return (
     <>
-      <main className="flex  justify-center">
-        <section className="min-h-24 w-[50%] bg-green-100 absolute bottom-50 ">
-          <div className="flex justify-center py-3">
-            <p
-              className="absolute left-1 cursor-pointer"
+      {/* Overlay */}
+      <main className="fixed inset-0 z-40 flex items-center justify-center bg-black/40 px-4">
+        <section className="w-full max-w-2xl overflow-hidden rounded-xl bg-white shadow-lg">
+          {/* Header */}
+          <div className="flex items-center justify-between border-b bg-sky-50 px-4 py-3">
+            <h2 className="text-lg font-semibold font-serif text-sky-900">
+              Reservation calendar
+            </h2>
+            <button
               onClick={handleClickCalnder}
+              className="text-sm text-gray-500 hover:text-gray-800"
             >
-              Close
-            </p>
-            <h2 className="text-xl font-semibold font-serif">Calender</h2>
+              Close ✕
+            </button>
           </div>
-          <div>
-            <div className="flex justify-center font-mono">
-              {theMonths[currentMonth.getMonth()]}
-              {currentMonth.getFullYear()}
-            </div>
-            <div className="flex justify-between">
-            <button onClick={nextMonth} className="p-1 border">
-              Next Month
-            </button>
-            <button className="border p-1" onClick={previousMonth}>
-              Previous Month
-            </button>
 
+          {/* Body */}
+          <div className="px-4 pb-4 pt-3 sm:px-6 sm:pb-6">
+            {/* Month header + controls */}
+            <div className="mb-3 flex items-center justify-between">
+              <div className="font-mono text-sm sm:text-base">
+                {theMonths[currentMonth.getMonth()]} {currentMonth.getFullYear()}
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={previousMonth}
+                  className="rounded-md border px-2 py-1 text-xs sm:text-sm hover:bg-gray-50"
+                >
+                  Prev
+                </button>
+                <button
+                  onClick={nextMonth}
+                  className="rounded-md border px-2 py-1 text-xs sm:text-sm hover:bg-gray-50"
+                >
+                  Next
+                </button>
+              </div>
             </div>
-            <ul className="grid grid-cols-7">
+
+            {/* Weekdays + days */}
+            <ul className="grid grid-cols-7 place-items-center gap-1 text-center text-[11px] sm:text-xs md:text-sm">
               {weeks.map((week) => (
-                <li className="border flex justify-center" key={week}>
+                <li
+                  className="py-1 text-xs font-semibold text-gray-600 flex justify-center"
+                  key={week}
+                >
                   {week}
                 </li>
               ))}
-              {weeksfull.map((item) => (
-                <li key={item}>{item}</li>
+              {weeksfull.map((_, index) => (
+                <li key={`empty-${index}`} className="py-1" />
               ))}
-              {days.map((day) =>{
-                const currentDay = new Date(year,month,day)
-                return(  <button onClick={()=>allSelectedDays(day)} className={`border flex justify-center ${ ( startDate && currentDay.getTime() === startDate.getTime()) || ( startDate && endDate && currentDay >= startDate && currentDay <= endDate  )? "bg-blue-500" : ""}`} key={day}>
-                  {day}
-                </button> )
-               
-})}
+              {days.map((dayNumber) => {
+                const currentDay = new Date(year, month, dayNumber);
+                const isInRange =
+                  (startDate &&
+                    currentDay.getTime() === startDate.getTime()) ||
+                  (startDate &&
+                    endDate &&
+                    currentDay >= startDate &&
+                    currentDay <= endDate);
+
+                return (
+                  <button
+                    key={dayNumber}
+                    onClick={() => allSelectedDays(dayNumber)}
+                    className={`flex h-8 w-8 items-center justify-center rounded-full text-xs sm:text-sm border hover:bg-sky-100 ${
+                      isInRange ? "bg-sky-600 text-white border-sky-600" : ""
+                    }`}
+                  >
+                    {dayNumber}
+                  </button>
+                );
+              })}
             </ul>
-            <div>{selectedDay.length > 0 && (
-  <p>
-    {selectedDay.length} days: {startDate.toLocaleDateString()} - {endDate.toLocaleDateString()}
-  </p>
-)}</div>
+
+            {/* Local selection summary */}
+            <div className="mt-4 text-xs sm:text-sm text-gray-700">
+              {selectedDay.length > 0 && startDate && endDate && (
+                <p>
+                  {selectedDay.length} days selected:{" "}
+                  {startDate.toLocaleDateString()} –{" "}
+                  {endDate.toLocaleDateString()}
+                </p>
+              )}
+            </div>
           </div>
         </section>
       </main>
     </>
   );
 };
+
 export default ReservCalender;
